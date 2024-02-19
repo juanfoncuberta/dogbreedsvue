@@ -1,5 +1,10 @@
 <template>
   <h1>Dog</h1>
+  <ul>
+    <li v-for="dog in dogs" v-bind:key="dog">
+      {{ dog }}
+    </li>
+  </ul>
 </template>
 
 <script setup>
@@ -22,7 +27,6 @@ const getData = async () => {
          
             
       });
-      console.log(dogs.value)
     } catch (error) {
         console.log("Error getting dogs from api",error)
     }
