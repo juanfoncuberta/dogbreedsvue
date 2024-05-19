@@ -1,12 +1,13 @@
 <template>
  
   <h1>Details</h1>
+  <div>
+    <button class="primary" @click="back">Back</button>
+  </div>
   
   {{ $route.params.breed }}
-
   <img :src="urlImage">
 
-  <button @click="back">Back</button>
 </template>
 
 
