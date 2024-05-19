@@ -2,7 +2,8 @@
   <h1>Dog</h1>
   <ul>
     <li v-for="dog in dogs" v-bind:key="dog">
-      {{ dog }}
+      <router-link :to="`/dogs/${dog}`">{{ dog }}</router-link>
+      
     </li>
   </ul>
 </template>
@@ -10,6 +11,7 @@
 <script setup>
 import axios from 'axios'
 import { ref,onBeforeMount } from 'vue'
+import { RouterLink} from 'vue-router'
 
 const result = ref([])
 const dogs = ref([])
