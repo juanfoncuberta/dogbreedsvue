@@ -2,11 +2,13 @@
  
   <h1>Details</h1>
   <div>
-    <button class="primary" @click="back">Back</button>
+    <button class="btn btn-primary" @click="back">Back</button>
   </div>
   
   {{ $route.params.breed }}
+  
   <img :src="urlImage">
+  <spinner v-if="loading" />
 
 </template>
 
@@ -15,8 +17,9 @@
   import { useRoute, useRouter } from 'vue-router'
   import { ref } from 'vue';
   import { fetchApi } from '@/composables/fetchApi';
+  import spinner from '@/components/spinner.vue';
   
-  const { getData } = fetchApi();
+  const { getData,loading } = fetchApi();
 
    const loadData = async() => {
 

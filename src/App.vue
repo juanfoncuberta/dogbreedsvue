@@ -4,30 +4,20 @@ import { RouterLink, RouterView } from 'vue-router'
 </script>
 
 <template>
-  <nav class="navbar bg-body-tertiary">
-  <div class="container-fluid">
-    <router-link class="navbar-brand" to="/">
-      <img src="@/assets/logo.svg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
-      FurryFriends
-    </router-link>
-    <div>
-      <router-link to="/">Home</router-link>
-      <router-link to="/dogs">Dogs</router-link>
+  <nav class="navbar">
+    <div class="container-fluid">
+      <router-link class="navbar-brand" to="/">
+        <img src="@/assets/logo.svg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+        <h4>FurryFriends</h4>
+      </router-link>
+      <div>
+        <router-link to="/">Home</router-link>
+        <router-link to="/dogs">Dogs</router-link>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
   <header>
-    <!-- <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
 
-    <div class="wrapper">
-
-
-     <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-        <RouterLink to="/dogs">Dog</RouterLink>
-      </nav> 
-    </div> -->
   </header>
 
   <RouterView />
