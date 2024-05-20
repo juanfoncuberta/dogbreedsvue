@@ -10,30 +10,32 @@
 
 </template>
 
-
 <script setup>
   import { onBeforeMount } from 'vue';
   import { useRoute, useRouter } from 'vue-router'
-  import axios from 'axios';
   import { ref } from 'vue';
+  import { fetchApi } from '@/composables/fetchApi';
+  
+  const { getData } = fetchApi();
 
-  const router = useRouter()
-  const urlImage = ref([])
-  const back = () => {
-    console.log("dentro")
-    router.push('/dogs')
-  }
-  onBeforeMount( async() => {
+   const loadData = async() => {
+
     try{
-      const data = await axios.get(`https://dog.ceo/api/breed/`+useRoute().params.breed+`/images/random`)
-      if(data.status == 200)
-          urlImage.value = data.data.message
-      else
-        throw new TypeError(data.statusText)
+
+      const result = await getData(`https://dog.ceo/api/breed/`+useRoute().params.breed+`/images/random`)
+      urlImage.value = result.message
+
     }catch(error){
       console.log("Error getting breed detail from api",error)
     }
 
-  })
+  }
+  const router = useRouter()
+  const urlImage = ref([])
+  const back = () => {
+    router.push('/dogs')
+  }
+
+  onBeforeMount( () => loadData());
 
 </script>
