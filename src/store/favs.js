@@ -6,8 +6,7 @@ export const useFavsStore = defineStore("favs",() => {
   const favs = ref([])
 
   const toggleFav = (dogBreed) => {
-    console.log(dogBreed)
-    console.log(favs.value.includes(dogBreed))
+
     const index = favs.value.indexOf(dogBreed);
         if (index > -1) 
             favs.value.splice(index, 1); 
