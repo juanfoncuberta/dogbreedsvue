@@ -13,11 +13,7 @@
 
   const props = defineProps(['dog'])
   const fav = ref(false)
-  const toggleActive= () =>{ 
-    console.log(fav.value)
-    fav.value = !fav.value
-    console.log(fav.value);
-  }
+  const toggleActive= () => fav.value = !fav.value
     
 </script>
 
