@@ -4,14 +4,14 @@
   <ul class="list-group">
     <li v-for="dog in dogs" v-bind:key="dog" class="list-group-item list-group-item-action list-group-item-dark">
       <router-link :to="`/dogs/${dog}`">{{ dog }}</router-link>
-      <favButton @toggleFavorite="toggleFavorite" :dog=dog></favButton>
+      <favButton @toggleFavorite="toggleFavorite" :isFav=isFav(dog) :dog=dog ></favButton>
     </li>
   </ul>
 </template>
 
 <script setup>
 
-  import { ref,onBeforeMount } from 'vue'
+  import { ref,onBeforeMount} from 'vue'
   import { RouterLink} from 'vue-router'
   import { fetchApi } from '@/composables/fetchApi';
   import spinner from '@/components/spinner.vue';
@@ -22,7 +22,7 @@
   const { getData,loading} = fetchApi()
   const dogs = ref([])
   const loadData = async () => { 
-      try {
+      try { 
           const result =  await getData('https://dog.ceo/api/breeds/list/all')
 
           Object.keys(result.message ).map((breed) => {
@@ -34,7 +34,8 @@
       }
   }
   const toggleFavorite = (dog) =>favs.toggleFav(dog);
-
+  const isFav = (breed) =>  favs.favs.indexOf(breed) != -1
+  
   onBeforeMount(() => loadData())
 
 </script>
